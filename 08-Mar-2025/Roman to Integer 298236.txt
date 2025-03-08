@@ -1,0 +1,55 @@
+# Problem: Roman to Integer - https://leetcode.com/problems/roman-to-integer/?envType=problem-list-v2&envId=string
+
+class Solution {
+    public int romanToInt(String s) {
+        int number = 0;
+        int currentNumber = 0;
+        int previousNumber = 0;
+
+        for( int i=s.length()-1;  i>= 0; i--){
+
+             //get its number 
+             //if number have  one digit add until it gets two digits
+             //if number have two digit add until it get third 
+             //same for four and five order 
+             //but when you encounter less number coming before more substract
+      
+        switch(s.charAt(i)){
+            case 'I': 
+              currentNumber = 1;
+              break;
+            case 'V':
+              currentNumber = 5;
+              break;
+            case 'X':
+              currentNumber = 10;
+              break;
+            case 'L':
+              currentNumber = 50;
+              break;
+            case 'C':
+              currentNumber = 100;
+              break;
+            case 'D':
+              currentNumber = 500;
+              break;
+            case 'M':
+              currentNumber = 1000;
+              break;
+            default:
+              currentNumber = 0;
+        }
+           
+           if(currentNumber >= previousNumber){
+                number  = number + currentNumber;
+           } else {
+                number = number - currentNumber;
+           }
+           
+           previousNumber = currentNumber;
+
+            
+        }
+        return number;
+    }
+}
